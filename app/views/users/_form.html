@@ -1,0 +1,16 @@
+<label>avatar</label>
+<input type="file" file-model ng-model="user.avatar" class="form-control">
+<p ng-if="user.avatar">
+  <img src="{{user.avatar}}">
+</p>
+<label>nome</label>
+<input ng-model="user.name" type="text" class="form-control">
+
+<label>email</label>
+<input ng-model="user.email" type="text" class="form-control">
+
+<label>descrição</label>
+<textarea ng-model="user.description" class="form-control"></textarea> 
+
+<label>dados para pagamento</label>
+<textarea ng-model="user.payment_data" class="form-control"></textarea> 

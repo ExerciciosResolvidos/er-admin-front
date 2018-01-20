@@ -1,0 +1,10 @@
+<ng-include src="'views/shared/_errors.html'" ></ng-include>
+
+<form ng-if="group">
+  <label class="t-padd-1">name</label>
+  <input type="text" class="form-control" type="text" ng-model="group.name" >
+  <br>
+  <label class="t-padd-1">description</label>
+  <textarea type="text" class="form-control" type="text" ng-model="group.description" ></textarea>
+  <br>
+</form>

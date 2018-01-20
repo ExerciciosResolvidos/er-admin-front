@@ -1,0 +1,42 @@
+<div class="row pictures-list" ng-controller="listPicturesController" ng-int="list({page: 1})">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">figuras</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>thumb</th>
+          <th>title</th>
+          <th>opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="picture in pictures">
+          <td>{{picture.id}}</td>
+          <td><img src="{{picture.image_thumb}}" ></td>          
+          <td>{{picture.title}}</td>
+          <td>
+            <a class="select-btn" href="#!pictures/{{picture.id}}">editar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="row keywords-list" ng-controller="listKeywordsController">
+
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">keywords</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Termos</th>
+          <th>
+            <a class="add-btn" href="#!keywords/novo">nova</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="keyword in keywords">
+          <td>{{keyword.id}}</td>
+          <td>{{keyword.term}}</td>
+          <td>
+            <a href="#!keywords/{{keyword.id}}" class="select-btn">
+              editar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>'
+</div> 

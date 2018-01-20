@@ -1,0 +1,17 @@
+<div ng-controller="editContentController" ng-init="loadFromRouteParams()" >
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!conteudos">conteúdos</a></li>
+      <li><a class="active">editar {{content.id}}</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <form ng-if="content" class="edit-content" >
+      <ng-include src="'views/contents/_pictures.html'" ></ng-include>
+      <br>
+      <ng-include src="'views/contents/_form.html'" ></ng-include>
+
+      <button class="save-btn" ng-click="update()">Salvar</button>
+    </form>
+  </div>
+</div>

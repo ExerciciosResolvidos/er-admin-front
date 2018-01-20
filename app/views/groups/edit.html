@@ -1,0 +1,14 @@
+<div ng-controller="editGroupController" ng-init="loadFromRouteParams()"  class="group-edit">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!listas">listas</a></li>
+      <li><a class="active">editar {{group.id}}</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <ng-include src="'views/groups/_form.html'" ></ng-include>
+    <button class="save-btn" ng-click="update()">
+      salvar
+    </button>
+  </div>
+</div>

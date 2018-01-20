@@ -1,0 +1,41 @@
+<div class="row products-list">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">products</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12" ng-controller="listProductsController">
+
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <br>
+    
+    <table>
+      <thead>
+      <tr>
+        <th>name</th>
+        <th>código</th>
+        <th>valor</th>
+        <th>usuário</th>
+        <th>preparado ?</th>
+        <th>
+          <a class="add-btn" href="#!products/novo">novo</a>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.price_in_cents }}</td>
+          <td>{{ product.user.name }}</td>
+          <td></td>
+          <td>
+            <a class="select-btn" href="#!products/{{product.id}}">editar</a>
+            <button class="rm-btn" ng-click="destroy(product)">excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

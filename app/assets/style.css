@@ -1,0 +1,141 @@
+.search-list, .relation-list {
+	display: flex;
+  flex-direction: column;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.search-list li, .relation-list li {
+	margin: 3px;
+}
+
+.search-list .add-btn, .relation-list .rm-btn {
+	font-size: 12px;
+}
+
+.modal-dialog{
+  background-color: #fff;
+}
+
+.image-list {
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+}
+
+.image-list li {
+  margin: 5px
+}
+
+.save-btn, .add-btn, .rm-btn, 
+.select-btn, .ok-btn, .process-btn {
+	float: right;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	padding: 5px 10px;
+	cursor: pointer
+}
+
+.save-btn:hover, .add-btn:hover, .rm-btn:hover, 
+.select-btn:hover, .ok-btn:hover, .process-btn:hover {
+	color: #fff;
+}
+
+.process-btn {
+	background-color: #f00;
+}
+
+.rm-btn {
+	background-color: #f00;
+}
+.save-btn,.add-btn {
+	background-color: darkgreen;
+}
+
+.select-btn {
+	background-color: blue;
+}
+
+.ok-btn {
+	background-color: blue;
+}
+
+table [class*="btn"] {
+	padding: 5px 10px;
+	font-size: 11px;
+	margin: 5px
+}
+
+table th [class*="btn"] {
+	font-size: 13px;
+	margin: 7px
+}
+
+table {
+	width: 100%;
+  max-width: 100%;
+	margin-bottom: 20px;
+}
+
+table th {
+	font-weight: bold;
+	padding: 5px 20px;
+	background-color: #eee;
+}
+
+table td {
+	padding: 5px 20px;
+}
+
+il.formulas {
+  padding-left: 10px;
+	list-style-type: decimal;
+}
+
+.formulas li {
+	margin-top: 10px
+}
+
+.formulas li .rm-btn {
+	float: right
+}
+
+/* pages */
+.exercises-list {}
+.exercise-edit {}
+
+.comments-list {}
+
+.groups-list {}
+.group-edit {}
+
+.keywords-list {}
+.keywords-edit {}
+
+
+.pictures-list {}
+.picture-edit {}
+
+.products-list {}
+.products-edit {}
+
+.search-list {}
+
+.login {}
+
+.system-process {
+
+}
+.system-process .process-btn {
+	margin: 20px
+}
+
+
+.tags-list {}
+.tag-edit {}
+
+.transactions-list {}
+
+.users-list {}
+.user-edit {}

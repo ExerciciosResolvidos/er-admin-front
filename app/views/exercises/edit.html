@@ -1,0 +1,11 @@
+<div class="row" ng-controller="editExerciseController" ng-init="loadFromRouteParams()">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!exercicios">Exercícios</a></li>
+      <li><a class="active">editar {{exercise.id}}</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12" >
+    <ng-include src="'views/exercises/_form.html'" ></ng-include>
+  </div>
+</div>

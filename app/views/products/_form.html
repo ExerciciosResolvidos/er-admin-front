@@ -1,0 +1,32 @@
+<label>nome</label>
+<input type="text" ng-model="product.name" class="form-control">
+
+<br>
+<label>description</label>
+<input type="text" ng-model="product.description" class="form-control">
+
+<br>
+<label>preço em centavos</label>
+<input type="number" ng-model="product.price_in_cents" class="form-control">
+
+<br>
+<label>amostra</label>
+<input type="file" file-model ng-model="product.sample" class="form-control">
+<br>
+<p ng-if="product.sample">
+  <a class="link" href="{{product.sample}}" target="_blank">{{product.sample}}</a>
+</p>
+<br>
+<label>material</label>
+<input type="file" file-model ng-model="product.material" class="form-control">
+<br>
+<p ng-if="product.material">
+  <a class="link" href="{{product.material}}" target="_blank">{{product.material}}</a>
+</p>
+<br>
+<label>imagem</label>
+<input type="file" file-model ng-model="product.image" class="form-control">
+<br>
+<p ng-if="product.image">
+  <img width="200px" src="{{product.image}}">
+</p>

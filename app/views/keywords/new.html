@@ -1,0 +1,16 @@
+<div ng-controller="editKeywordController"  ng-init="new()" class="keyword-edit">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!listas">keywords</a></li>
+      <li><a class="active">nova</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12">
+    <ng-include src="'views/keywords/_form.html'" ></ng-include>
+    <br>
+    <button class="save-btn" ng-click="create()">
+      salvar
+    </button>
+  </div>
+</div>

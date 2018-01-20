@@ -1,0 +1,115 @@
+<ng-include src="'views/shared/_errors.html'" ></ng-include>
+
+<form ng-if="exercise" class="exercise-edit">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- top panel -->
+      <div class="panel panel-primary">
+        
+        <div class="panel-heading">
+          problema
+        </div>
+
+        <div class="panel-body">
+          <label class="t-space-1">titulo</label>
+          <input type="text" click-outside class="form-control" ng-model="exercise.title">
+          <label class="t-space-1">enunciado</label>
+          <textarea type="text" click-outside class="form-control" ng-model="exercise.enunciation"></textarea>
+        </div>
+      
+      </div>
+      <ng-include src="'views/exercises/_form_pictures.html'" ></ng-include>
+
+      <ul class="nav nav-tabs">
+        <li class="tab-{{$index}}"
+            ng-class="(resolution == currentResolution)? 'active': ''"
+            ng-repeat="resolution in exercise.resolutions">
+
+          <button ng-if="$index > 0" 
+                  class="btn btn-danger btn-xs pull-right" 
+                  ng-click="removeResolution(resolution, exercise.resolutions)">
+            remover
+          </button> 
+
+
+          <a data-toggle="tab" ng-click="setActiveResolution(resolution)">
+             {{resolution.titulo}}
+          </a>
+        </li>
+        <li>
+          <a ng-click="addResolution()" >+ resolution</a>
+        </li>
+      </ul>
+
+    <div class="tab-content">
+
+      <div id="review-{{$index}}" ng-if="!resolution._destroy" 
+           class="tab-pane" 
+           ng-class="(resolution == currentResolution)? 'active': ''"
+           ng-repeat="resolution in exercise.resolutions">
+
+        <ul class="list-unstyled">
+          <li class="well t-space-1" ng-repeat="etapa in resolution.etapas">
+            
+            <button class="rm-btn" ng-click="removeStep(etapa, resolution)">
+              remover etapa
+            </button> 
+
+            <!-- descrição -->
+            <label>descrição</label>
+            <input type="text" class="form-control" click-outside ng-model="etapa.description">
+
+            <!-- formulas -->
+            <label>formulas</label>
+            <button ng-click="addFormula(etapa)" class="add-btn">
+              + formula
+            </button>
+            <ul class="formulas">
+              
+              <li ng-repeat="formula in etapa.formulas">
+                <button class="rm-btn" ng-click="removeFormula(formula, etapa.formulas)">
+                 remover
+                </button> 
+                <input type="text" class="form-control" click-outside 
+                       ng-model="'$' + formula + '$'">
+              
+              </li>
+            </ul>
+            <!-- obs -->
+            <label>observação</label>
+            <input type="text" class="form-control" click-outside ng-model="etapa.obs">
+          </li>
+        </ul>
+        <!-- add step -->
+        <button class="add-btn" ng-click="addStep(resolution)">+ etapa</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- lareral -->
+  <div class="col-md-4">
+  <!-- publicação -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      publicação
+      </div>
+      <div class="panel-body">
+        <label class="t-space-1">origem</label>
+        <input type="text" ng-model="exercise.origin" class="form-control">
+        <label class="t-space-1">slug</label>
+        <input type="text" ng-model="exercise.slug" class="form-control">
+        <div class="t-space-1">
+          <button class="save-btn" ng-click="save()">
+            salvar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- tags -->
+    <ng-include src="'views/exercises/_form_tags.html'" ></ng-include>
+    <!-- keywords -->
+    <ng-include src="'views/exercises/_form_keywords.html'" ></ng-include>
+    <!-- listas -->
+    <ng-include src="'views/exercises/_form_groups.html'" ></ng-include>
+  </div>
+</form>

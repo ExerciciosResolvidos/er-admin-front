@@ -1,0 +1,64 @@
+<div>
+  <div>
+    <!-- titulo -->
+    <label class="t-padd-1" >titulo</label>
+    <input class="form-control" type="text"  click-outside ng-model="content.title" >
+
+    <!-- slug -->
+    <label>slug</label>
+    <input class="form-control" type="text" ng-model="content.slug" >
+
+    <!-- description -->
+    <label class="t-padd-1">descrição</label>
+    <textarea class="form-control" type="text" click-outside ng-model="content.description">
+    </textarea> 
+
+    <!-- text  -->
+    <label class="t-padd-1">texto</label>
+    <textarea class="form-control" type="text" click-outside ng-model="content.text" >
+    </textarea> 
+  </div>
+  <ng-include src="'views/contents/_form_pictures.html'" ></ng-include>
+  
+</div>
+<!-- Reviews -->
+<!-- tab menu for reviews -->
+<ul class="nav nav-tabs">
+  <li class="tab-{{$index}}"
+    ng-class="(review == currentReview)? 'active': ''"
+    ng-repeat="review in content.reviews_attributes">
+    <a data-toggle="tab" ng-click="setActiveReview(review)">
+      {{review.title}}
+    </a>
+  </li>
+  <li>
+    <a ng-click="addReview()" >
+      + resenha
+    </a>
+  </li>
+</ul>
+<!-- tab for reviews -->
+<div class="tab-content">
+  <div ng-if="!review._destroy" 
+       class="tab-pane well" 
+       ng-class="(review == currentReview)? 'active': ''"
+       ng-repeat="review in content.reviews_attributes">
+
+    <a class="btn btn-sm btn-danger pull-right" 
+    ng-click="removeReview(review)" ng-if=" content.reviews_attributes.length > 1">remover
+    </a>
+    <!-- titulo -->
+    <label>titulo</label>
+    <input class="form-control" type="text" click-outside ng-model="review.title" >
+
+    <!-- description -->
+    <label>descrição</label>
+    <textarea class="form-control" click-outside ng-model="review.description" >
+    </textarea>
+
+    <!-- text -->
+    <label>texto</label>
+    <textarea class="form-control" click-outside ng-model="review.text" >
+    </textarea>
+  </div>
+</div>

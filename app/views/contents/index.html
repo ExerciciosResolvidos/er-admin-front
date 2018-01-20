@@ -1,0 +1,40 @@
+<div class="row list-content" ng-controller="listContentsController" >
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">contents</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>titulos</th>
+        <th>descrição</th>
+        <th>relacionado a</th>
+        <th>
+          <a class="add-btn" href="#!conteudos/novo">novo</a>
+        </th>
+      </tr>
+      <tr ng-repeat="content in contents">
+        <td>{{ content.id }}</td>
+        <td>{{ content.title }}</td>
+        <td>{{ content.description }}</td>
+        <td>{{ content.content }} </td>
+        <td>
+          <a href="#!conteudos/{{content.id}}" class="select-btn">editar</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

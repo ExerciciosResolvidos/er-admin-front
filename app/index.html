@@ -1,0 +1,138 @@
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercícios Resolvidos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css" >
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0/angular-route.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <script src="init.js"></script>
+    <script src="directives/file-model-directive.js"></script>
+    <script src="directives/click-outside-directive.js"></script>
+    <script src="directives/bootstrap-modal-directive.js"></script>
+
+    <script src="services/config-service.js"></script>
+    <script src="services/api-service.js"></script>
+    <script src="services/formulas.js"></script>
+    <script src="services/images.js"></script>
+
+    <script src="controllers/exercises/edit-exercise-controller.js"></script>
+    <script src="controllers/exercises/list-exercises-controller.js"></script>
+
+    <script src="controllers/pictures/edit-picture-controller.js"></script>
+    <script src="controllers/pictures/list-pictures-controller.js"></script>
+
+    <script src="controllers/keywords/edit-keyword-controller.js"></script>
+    <script src="controllers/keywords/list-keywords-controller.js"></script>
+
+    <script src="controllers/groups/edit-group-controller.js"></script>
+    <script src="controllers/groups/list-groups-controller.js"></script>
+
+    <script src="controllers/products/edit-product-controller.js"></script>
+    <script src="controllers/products/list-products-controller.js"></script>
+
+    <script src="controllers/tags/edit-tag-controller.js"></script>
+    <script src="controllers/tags/list-tags-controller.js"></script>
+
+    <script src="controllers/users/edit-user-controller.js"></script>
+    <script src="controllers/users/list-users-controller.js"></script>
+
+    <script src="controllers/contents/edit-content-controller.js"></script>
+    <script src="controllers/contents/list-contents-controller.js"></script>
+    <script src="controllers/comments/list-comments-controller.js"></script>
+
+    <script src="controllers/system/publish-controller.js"></script>
+
+    <script src="controllers/list-search-controller.js"></script>
+    <script src="controllers/list-transactions-controller.js"></script>
+
+    <script src="controllers/session-controller.js"></script>
+  </head>
+
+  <body class="" ng-app="ER" ng-controller="sessionController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="">
+      <div class="navbar-header">
+        <button class="navbar-toggle pull-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">ER Admin</a>
+       </div>
+       <nav class="navbar-collapse collapse">
+        <ul ng-if="hasUser()" class="nav navbar-nav pull-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+             {{userName()}} - {{userRole()}}<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu-do-autor">
+             <li>
+                <a ng-click="logout()">Sair</a>
+             </li>
+            </ul>
+          </li>
+        </ul>
+       </nav>
+     </div>
+    </div>
+    <div class="main-content row" style="margin-top: 50px">
+      <div class="col-sm-2 sidebar" ng-if="hasUser()">
+        <ul class="nav nav-sidebar">
+          <li>
+            <a href="#!exercicios">Exercícios</a>
+          </li>
+          <li>
+            <a href="#!listas">Listas</a>
+          </li>
+          <li ng-if="userRoleIs('editor')">
+            <a href="#!pictures">Pics</a>
+          </li>
+          <li>
+            <a href="#!comments">comentários</a>
+          </li>
+          <li>
+            <a href="#!conteudos">Conteúdos</a>
+          </li>
+          <li>
+            <a href="#!buscas">Buscas</a>
+          </li>
+          <li ng-if="userRoleIs('editor')">
+            <a href="#!tags">Tags</a>
+          </li>
+          <li ng-if="userRoleIs('admin')">
+            <a href="#!products">Produtos</a>
+          </li>
+          <li>
+            <a href="#!keywords">Keywords</a>
+          </li>
+          <li ng-if="userRoleIs('admin')" >
+            <a href="#!usuarios">Usuários</a>
+          </li>
+          <li ng-if="userRoleIs('admin')" >
+            <a href="#!transactions">pagSeguro</a>
+          </li>
+          <li ng-if="userRoleIs('admin')" >
+            <a href="#!/system/publish">publições</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9">
+        <br>
+        <div class="row" ng-view></div>
+      </div>
+    </div>
+  </body>
+</html>

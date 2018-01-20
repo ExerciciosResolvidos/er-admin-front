@@ -1,0 +1,36 @@
+<!-- picures -->
+<bootstrap-modal call-to-action="figuras" >
+  <div ng-controller="listPicturesController" >
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <table class="table" ng-if="pictures">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th></th>
+          <th>nome</th>
+          <th>descrição</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="picture in pictures">
+          <td>{{picture.id}}</td>
+          <td><img src="{{picture.image || picture.s3_url}}" style="max-width: 70px"></td>
+          <td>{{picture.title}}</td>
+          <td>{{picture.description}}</td>
+          <td>
+             <small>ex.: [img="{{picture.id}}" size="200x200" ]</small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</bootstrap-modal>

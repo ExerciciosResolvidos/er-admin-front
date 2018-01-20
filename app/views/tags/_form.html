@@ -1,0 +1,83 @@
+<label>titulo</label>
+<input type="text" class="form-control" ng-model="tag.title">
+
+<br>
+<label>pertence a</label>
+<input type="text" class="form-control"  ng-model="tag.parent_tag_attributes.title">
+
+<bootstrap-modal call-to-action="mudar" title="figuras" btn-classes="add-btn">
+  <div ng-controller="listTagsController" >
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+  </br></br>
+    <table class="table" ng-if="tags">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>titulo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="tag in tags">
+          <td>{{tag.id}}</td>
+          <td>{{tag.title}}</td>
+          <td>{{tag.tag_id}}</td>
+          <td><a class="select-btn" ng-click="changeParent(tag)">adicionar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</bootstrap-modal>
+
+<br><br>
+<label>contem</label>
+<ul class="relation-list">
+  <li ng-repeat="tag in tag.child_tags_attributes">
+    {{tag.title}}
+    <a class="rm-btn" ng-click="removeChildTag(tag)">
+      remover
+    </a>
+  </li>
+</ul>
+<br>
+<bootstrap-modal call-to-action="adicionar" title="adicionar" btn-classes="add-btn" >
+  <div ng-controller="listTagsController" >
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <table class="table" ng-if="tags">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>titulo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="tag in tags">
+          <td>{{tag.id}}</td>
+          <td>{{tag.title}}</td>
+          <td>{{tag.tag_id}}</td>
+          <td><a class="add-btn" ng-click="addChildTag(tag)">adicionar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</bootstrap-modal>
+<br><br>
+<label>descrição</label>
+<textarea class="form-control" lick-outside ng-model="tag.description"></textarea>

@@ -1,0 +1,43 @@
+<div class="row tags-list" ng-controller="listTagsController">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">tags</a></li>
+    </ul>
+  </div>
+  <div class="col-lg-12">
+    <a href="#!tags/novo" class="add-btn">
+      novo
+    </a>
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <br></br>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>título</th>
+        <th>tag_id</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="tag in tags">
+        <td>{{tag.id}}</td>
+        <td>{{tag.title}}</td>
+        <td>{{tag.tag_id}}</td>
+        <td>
+          <button href="#!tags/{{tag.id}}" class="select-btn">
+            editar
+          </button>
+          <button class="rm-btn" ng-click="destroy(tag)">excluir</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

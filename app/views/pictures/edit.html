@@ -1,0 +1,26 @@
+<div class="row picture-edit" ng-controller="editPictureController" ng-init="loadFromRouteParams()">
+
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!pictures">figuras</a></li>
+      <li><a class="active">editar {{picture.id}}</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12">    
+    <label>titulo</label>
+    <input type="text" class="form-control" ng-model="picture.title">
+
+    <label>descrição</label>
+    <input type="text" class="form-control" ng-model="picture.description">
+    <label>imagem</label>
+    <input type="file" file-model ng-model="picture.image" class="form-control">
+    <p ng-if="picture.image">
+      <img class="thumb" src="{{picture.image}}">
+    </p>
+    <br>
+    <button class="btn btn-success" ng-click="update()">
+      salvar
+    </button>
+  </div>
+</div>

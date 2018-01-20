@@ -1,0 +1,17 @@
+<div class="row tag-edit" ng-controller="editTagController" ng-init="new()">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!tags">tags</a></li>
+      <li><a class="active">novo</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <form ng-if="tag">
+      <ng-include src="'views/tags/_form.html'" ></ng-include>
+      <br>
+      <button class="save-btn" ng-click="create()">
+        salvar
+      </button>
+    </form>
+  </div>
+</div>

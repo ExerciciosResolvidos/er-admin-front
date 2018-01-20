@@ -1,0 +1,43 @@
+<div class="row exercises-list" ng-controller="listExercisesController">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#!exercicios">Exercícios</a></li>
+      <li><a class="active">novo exercício</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Autor</th>
+        <th>Titulo</th>
+        <th>status</th>
+        <th>
+          <a class="add-btn" href="#!exercicios/novo">novo</a>
+        </th>
+      </tr>
+      <tbody>
+        <tr ng-repeat="exercise in exercises">
+          <td>{{ exercise.id }}</td>
+          <td>{{ exercise.title }}</td>
+          <td>{{ exercise.author}}</td>
+          <td>{{ exercise.status }}</td>
+          <td>
+            <a class="select-btn" href="#!exercicios/{{exercise.id}}">editar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

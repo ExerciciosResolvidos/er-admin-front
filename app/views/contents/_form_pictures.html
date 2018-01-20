@@ -1,0 +1,56 @@
+<!-- figuras -->
+<div class="panel panel-primary">
+  <div class="panel-body" ng-controller="listPicturesController">
+
+    <bootstrap-modal call-to-action="adicionar figura" title="adicionar" btn-classes="add-btn">
+      <form ng-if="picture" name="addPicutureForm" >
+
+        <label>titulo</label>
+        <p>{{addPicutureForm.title.$valid}}</p>
+        <input type="text" name="title" class="form-control" ng-model="picture.title" >
+
+        <label>descrição</label>
+        <p>{{addPicutureForm.file.$valid}}</p>
+        <input type="text" name="description" class="form-control" ng-model="picture.description" >
+        <label>imagem</label>
+        <p>{{addPicutureForm.file.$valid}}</p>
+        <input type="file" name="file" file-model ng-model="picture.image" class="form-control" >
+        <p ng-if="picture.image">
+          <img class="img-responsive" src="{{picture.image}}">
+        </p>
+        <button type="submit" class="add-btn" ng-click="addPicture(picture)">
+          adicionar
+        </button>
+      </form>
+    </bootstrap-modal>
+
+    <ul class="image-list">
+
+      <li ng-repeat="picture in exercise.pictures_attributes">
+        <figure class="img-thumbnail">
+          <figcaption>{{picture.title}}</figcaption>
+          <img width="100x" src="{{picture.image_thumb || picture.image }}" >
+        </figure>
+
+        <bootstrap-modal call-to-action="editar" title="adicionar" btn-classes="select-btn">
+          <label>titulo</label>
+          <input type="text" class="form-control" ng-model="picture.title">
+
+          <label>descrição</label>
+          <input type="text" class="form-control" ng-model="picture.description">
+
+          <label>imagem</label>
+          <input type="file" file-model ng-model="picture.image" class="form-control">
+          
+          <p ng-if="picture.image">
+            <img class="img-responsive" src="{{picture.image}}">
+          </p>
+
+          <button class="ok-btn" ng-click="addPicture(picture)">
+          salvar
+          </button>
+        </bootstrap-modal>
+      </li>
+    </ul>
+  </div>
+</div>

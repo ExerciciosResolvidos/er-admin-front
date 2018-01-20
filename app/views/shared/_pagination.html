@@ -1,0 +1,14 @@
+<p>
+<button ng-disabled="pagination.first_page" class="prev-btn" 
+        ng-click="list({ page: pagination.previous_page })">
+   anterior
+</button> 
+
+<button ng-disabled="pagination.last_page" class="next-btn" 
+        ng-click="list({ page: pagination.next_page })">
+   próxima
+</button> 
+
+  total de registros: {{pagination.total}} 
+  pagina: {{pagination.current_page}}/{{pagination.total_pages}}
+</p>

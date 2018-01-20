@@ -1,0 +1,30 @@
+<div class="row groups-list" ng-controller="listGroupsController">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">listas</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12" >
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <br>
+    <table>
+     <tr>
+       <th>nome</th>
+       <th>descrição</th>
+       <th>
+         <a class="add-btn" href="#!listas/novo">novo</a>
+       </th>
+     </tr>
+    <tr ng-repeat="group in groups">
+      <td>{{ group.name }}</td>
+      <td>{{ group.description }}</td>
+      <td>
+        <a class="select-btn" href="#!listas/{{group.id}}">
+          editar
+        </a>
+      </td>
+    </tr>
+   </table>
+  </div>
+</div>

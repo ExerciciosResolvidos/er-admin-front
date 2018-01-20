@@ -1,0 +1,36 @@
+<div class="row transactions-list" ng-controller="listTransactionsController">
+
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">transações</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>#</th>
+          <th>status</th>
+          <th>data</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="transaction in transactions">
+          <td></td>
+          <td>{{ transaction._id.$oid }}</td>
+          <td>{{ humanizedStatus(transaction.status.id) }}</td>
+          <td>{{ transaction.created_at }}</td>
+          <td>
+            <button class="btn btn-success" ng-click="show(transaction)">
+              detalhes
+            </button>
+          </td>
+        </tr>
+      </tbody>       
+    </table>
+  </div>
+</div>
+

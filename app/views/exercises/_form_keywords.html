@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+	palavras chaves
+	</div>
+	<div class="panel-body" ng-controller="listKeywordsController">
+		<!-- search keywords -->
+		<input type="text" class="form-control" ng-change="list({ q: q })" ng-model="q">
+
+		<ul class="search-list" ng-if="q">
+			<li ng-repeat="keyword in keywords" ng-if="!hasItem('keywords_attributes',keyword,'id')" >
+				{{keyword.term}} 
+				<button class="add-btn" ng-click="select(keyword)">
+					adicionar
+				</button>
+			</li>
+			<li ng-if="keyword.length == 0">
+				{{q}}(categoria não cadastrada)</small> 
+				<button class="add-btn" ng-click="select({term: q}); q = null">
+					adicionar
+				</button>
+			</li>
+		</ul> 
+
+		<ul class="relation-list">
+			<li ng-repeat="keyword in exercise.keywords_attributes" class="xs-space-1">
+				{{keyword.term}}
+				<button class="rm-btn" ng-click="removeItem('keywords_attributes',keyword)">
+					remover
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>

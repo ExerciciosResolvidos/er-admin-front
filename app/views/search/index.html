@@ -1,0 +1,45 @@
+<div class="row search-list" ng-controller="listSearchController">
+
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">buscas</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-12">
+   
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search">
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="list({q: search})" type="button">
+           buscar
+        </button>
+      </span>
+    </div><!-- /input-group -->
+    <br/>
+    <table>
+      <thead>
+        <tr>
+          <th>data</th>
+          <th>Busca</th>
+          <th>Encontrado</th>
+          <th>
+            <a class="add-btn" href="#!products/novo">novo</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="search in searchs">
+          <td>{{search.created_at}}</td>
+          <td>{{search.query}}</td>          
+          <td>{{search.found}}</td>
+          <td>
+            <button class="rm-btn" ng-click="destroy(search)">excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

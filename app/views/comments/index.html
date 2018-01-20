@@ -1,0 +1,36 @@
+<div class="row comments-list" ng-controller="listCommentsController" >
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a class="active">comments</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+
+    <ng-include src="'views/shared/_pagination.html'" ></ng-include>
+    <br>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>author_id</th>
+        <th>created_time</th>
+        <th>name</th>
+        <th>facebook_id</th>
+        <th>message</th>
+        <th>url</th>
+      </tr>
+      <tr ng-repeat="content in comments">
+        <td>{{ content.id }}</td>
+        <td>{{ content.author_id }}</td>
+        <td>{{ content.created_time }}</td>
+        <td>{{ content.from.name }} </td>
+        <td>{{ content.from.id }} </td>
+        <td>{{ content.message }} </td>
+        <td>
+          <a href="{{content.url}}" target="_blank" btn="btn btn-success btn-sm">
+            ver exercicio 
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

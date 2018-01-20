@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+	listas
+	</div>
+	<div class="panel-body" ng-controller="listGroupsController">
+		
+		<!-- search groups  -->
+		<input type="text" class="form-control" ng-change="list({ q: q })" ng-model="q">
+
+		<ul class="search-list" ng-if="q">
+			<li ng-repeat="group in groups" ng-if="!hasItem('groups_attributes',group,'id')" >
+				{{group.name}} 
+				<button class="add-btn" ng-click="select(group)">
+					adicionar
+				</button>
+			</li>
+			<li ng-if="groups.length == 0">
+				{{q}}(categoria não cadastrada)</small> 
+				<button class="add-btn" ng-click="select({name: q}); q = null">
+					adicionar
+				</button>
+			</li>
+		</ul> 
+		<ul class="relation-list">
+			<li ng-repeat="group in exercise.groups_attributes">
+				{{group.name}}
+				
+				<button class="rm-btn" ng-click="removeItem('groups_attributes',group)">
+					remover
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
