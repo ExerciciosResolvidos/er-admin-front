@@ -20,24 +20,8 @@
       </span>
     </div><!-- /input-group -->
     <br/>
-    <table>
-      <tr>
-        <th>id</th>
-        <th>título</th>
-        <th>tag_id</th>
-        <th></th>
-      </tr>
-      <tr ng-repeat="tag in tags">
-        <td>{{tag.id}}</td>
-        <td>{{tag.title}}</td>
-        <td>{{tag.tag_id}}</td>
-        <td>
-          <button href="#!tags/{{tag.id}}" class="select-btn">
-            editar
-          </button>
-          <button class="rm-btn" ng-click="destroy(tag)">excluir</button>
-        </td>
-      </tr>
-    </table>
+    <ul>
+      <ng-include src="'views/tags/_tag-item.html'" ></ng-include>
+    </ul>
   </div>
 </div>

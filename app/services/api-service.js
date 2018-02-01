@@ -48,6 +48,7 @@ angular
 
       let api = {}
 
+
       for(let resource of resources){
         let lowcase = resource.toLowerCase()
         

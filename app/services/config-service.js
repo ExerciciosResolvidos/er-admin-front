@@ -7,8 +7,8 @@ angular
       let config = {}
       let hosts = {
         "localhost": "api.exerciciosresolvidos.net",
-        // "localhost": "localhost:3000", 
-        "er-app": "api.exerciciosresolvidos.net"
+        "localhost": "localhost:3000", 
+        // "er-app": "api.exerciciosresolvidos.net"
       }
 
       Object.keys(hosts).forEach((key) => {
