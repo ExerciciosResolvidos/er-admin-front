@@ -1,0 +1,20 @@
+<li ng-repeat="tag in tags" draggable="true">
+  <p>{{tag.id}} - {{tag.title}}
+  <!-- <span>{{tag.tag_id}}</span> -->
+  <button href="#!tags/{{tag.id}}" class="select-btn">
+    editar
+  </button>
+  <button class="rm-btn" ng-click="destroy(tag)">excluir</button>
+
+  <p>
+
+    <ul>
+      <ng-include 
+        ng-if="tag.childs.length > 0" 
+        src="'views/tags/_tag-item.html'" 
+        onload="tags = tag.childs"
+        >
+      </ng-include>
+    </ul>
+  </p>
+</li>
