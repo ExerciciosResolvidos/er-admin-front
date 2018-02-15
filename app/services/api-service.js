@@ -34,18 +34,6 @@ angular
         filterAttrs[resource.toLowerCase()] = (attrs) => attrs
       }
 
-
-      filterAttrs.exercise = (attrs) => {
-        if( attrs.exercise.pictures_attributes) {
-          for(let picture of attrs.exercise.pictures_attributes){
-            delete picture.image_thumb
-            delete picture.image_medium
-            delete picture.s3_url
-          }
-        }
-        return attrs 
-      }
-
       let api = {}
 
 

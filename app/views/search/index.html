@@ -23,7 +23,9 @@
       <thead>
         <tr>
           <th>data</th>
+          <th>user_id</th>          
           <th>Busca</th>
+          <th>pagina</th>
           <th>Encontrado</th>
           <th>
             <a class="add-btn" href="#!products/novo">novo</a>
@@ -33,7 +35,9 @@
       <tbody>
         <tr ng-repeat="search in searchs">
           <td>{{search.created_at}}</td>
-          <td>{{search.query}}</td>          
+          <td>{{search.user_id}}</td>
+          <td>{{search.query}}</td>
+          <td>{{search.page}}</td>
           <td>{{search.found}}</td>
           <td>
             <button class="rm-btn" ng-click="destroy(search)">excluir</button>
