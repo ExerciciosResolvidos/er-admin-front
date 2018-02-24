@@ -8,24 +8,24 @@
 		<input type="text" class="form-control" ng-change="list({ q: q })" ng-model="q">
 
 		<ul class="search-list" ng-if="q">
-			<li ng-repeat="group in groups" ng-if="!hasItem('groups_attributes',group,'id')" >
+			<li ng-repeat="group in groups" ng-if="!hasItem('sgroups',group, 'id')" >
 				{{group.name}} 
-				<button class="add-btn" ng-click="select(group)">
+				<button class="add-btn" ng-click="addItem('sgroups', group); resetQuery()">
 					adicionar
 				</button>
 			</li>
 			<li ng-if="groups.length == 0">
 				{{q}}(categoria não cadastrada)</small> 
-				<button class="add-btn" ng-click="select({name: q}); q = null">
+				<button class="add-btn" ng-click="select({name: q}); resetQuery()">
 					adicionar
 				</button>
 			</li>
 		</ul> 
 		<ul class="relation-list">
-			<li ng-repeat="group in exercise.groups_attributes">
+			<li ng-repeat="group in sgroups">
 				{{group.name}}
 				
-				<button class="rm-btn" ng-click="removeItem('groups_attributes',group)">
+				<button class="rm-btn" ng-click="removeItem('sgroups',group)">
 					remover
 				</button>
 			</li>

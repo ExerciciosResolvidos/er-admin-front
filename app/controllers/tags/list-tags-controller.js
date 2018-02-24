@@ -3,7 +3,7 @@ angular
   .module("ER")
   .controller("listTagsController", 
     ["$scope", "apiService", "$rootScope", 
-    function($scope,apiService, $rootScope) {
+    function($scope, apiService, $rootScope) {
 
       function linkTags(tags) {
         return tags.filter(t => 
@@ -28,6 +28,12 @@ angular
         return false
       }
 
+      $scope.q = null;
+
+      $scope.resetQuery = () => {
+        $scope.q = null;
+      };
+
       $scope.list = query => 
         apiService
         .getTags(query)
@@ -45,7 +51,6 @@ angular
       const init = () =>
         $scope.list()
 
-      init()
     }
   ]
 )

@@ -1,34 +1,33 @@
 <div class="panel panel-primary">
-	<div class="panel-heading">
-	tags
-	</div>
-	<div class="panel-body" ng-controller="listTagsController">
-		
-		<!-- search tags -->
-		<input type="text" class="form-control" ng-change="list({ q: q })" ng-model="q">
+  <div class="panel-heading">
+  tags
+  </div>
+  <div class="panel-body" ng-controller="listTagsController">
 
-		<ul class="search-list" ng-if="q">
-			<li ng-repeat="tag in tags" ng-if="!hasItem('tags_attributes',tag,'id')" >
-				{{tag.title}} 
-				<button class="add-btn" ng-click="addItem('tags_attributes',tag); q = null">
-					adicionar
-				</button>
-			</li>
-			<li ng-if="tags.length == 0">
-				{{q}}(categoria não cadastrada)</small> 
-				<button class="add-btn" ng-click="select({title: q}); q = null">
-					adicionar
-			  </button>
-			</li>
-		</ul> 
+    <!-- search tags -->
+    <input type="text" class="form-control" ng-change="list({ q: q })" ng-model="q">
+    <ul class="search-list" ng-if="q">
+      <li ng-repeat="tag in tags" ng-if="!hasItem('stags', tag, 'id')" >
+        {{tag.title}} 
+        <button class="add-btn" ng-click="addItem('stags', tag); resetQuery()"> 
+          adicionar
+        </button>
+      </li>
+      <li ng-if="tags.length == 0">
+        {{q}}(categoria não cadastrada)</small> 
+        <button class="add-btn" ng-click="select({title: q}); resetQuery()">
+          adicionar
+        </button>
+      </li>
+    </ul> 
 
-		<ul class="relation-list">
-			<li ng-repeat="tag in exercise.tags_attributes" >
-				{{tag.title}}
-				<button class="rm-btn" ng-click="removeItem('tags_attributes',tag)">
-					remover
-				</button>
-			</li>
-		</ul>
-	</div>
+    <ul class="relation-list">
+      <li ng-repeat="tag in stags" >
+      {{tag.title}}
+      <button class="rm-btn" ng-click="removeItem('stags', tag);">
+        remover
+      </button>
+      </li>
+    </ul>
+  </div>
 </div>

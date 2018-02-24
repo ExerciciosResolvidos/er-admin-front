@@ -27,9 +27,9 @@ angular
           resolutions: [
             { titulo: "resolução", etapas: [] }
           ],
-          tags: [],
+          tag_ids: [],
           keywords: [],
-          groups: []
+          group_ids: []
         }
         $scope.setActiveResolution($scope.exercise.resolutions[0])
       }
@@ -47,20 +47,21 @@ angular
         $scope.addItem("groups", group)
       )
 
-      $scope.hasItem = (key, item, checkBy) => 
-          checkBy 
-          ? ($scope.exercise[key].find(i => i[checkBy] === item[checkBy])) 
-          : ($scope.exercise[key].indexOf(item) !== 1)
-      
+      $scope.hasItem = (key, item, checkBy) => {
+        if(checkBy)
+          return ($scope[key].find(i => i[checkBy] === item[checkBy])) 
+        else
+          return ($scope[key].indexOf(item) !== 1)
+      }
 
-      $scope.addItem = (key,item) => {
-        $scope.hasItem(key, item) ? $scope.exercise[key].push(item) : null
+      $scope.addItem = (key, item) => {
+        $scope.hasItem(key, item) ? $scope[key].push(item) : null
       }
 
       $scope.removeItem =  (key, item) => {
         
-        const index = $scope.exercise[key].indexOf(item)
-        $scope.exercise[key].splice(index, 1)
+        const index = $scope[key].indexOf(item)
+        $scope[key].splice(index, 1)
       }
 
 
@@ -68,7 +69,7 @@ angular
         apiService
         .getTags({ in: { resource: "exercise", id: $scope.exercise.id }})
         .then(resp => {
-          $scope.exercise.tags_attributes = resp.data
+          $scope.stags = resp.data
         })
         .catch(resp => console.error(resp.data))
 
@@ -77,7 +78,7 @@ angular
         apiService
         .getKeywords({ in: { resource: "exercise", id: $scope.exercise.id } })
         .then(resp => {
-          $scope.exercise.keywords = resp.data
+          $scope.skeywords = resp.data
         })
         .catch(resp => console.error(resp.data))
       
@@ -85,7 +86,7 @@ angular
         apiService
         .getGroups({ in: { resource: "exercise", id: $scope.exercise.id } })
         .then(resp => {
-          $scope.exercise.groups = resp.data
+          $scope.sgroups = resp.data
         })
         .catch(resp => console.error(resp.data))
       
@@ -145,9 +146,17 @@ angular
       $scope.save = () =>
         ($scope.exercise.id)? update() : create()
 
+      function formData() {
+        const data =  angular.copy($scope.exercise)
+        data.tag_ids = $scope.stags.map(t => t.id)
+        data.group_ids = $scope.sgroups.map(g => g.id)
+        data.keywords = angular.copy($scope.skeywords)
+        return data
+      }
+
       function create() {
         apiService
-        .createExercise({ exercise: $scope.exercise })
+        .createExercise(formData())
         .then(resp => onSuccess(resp))
         .catch(resp => {
           $scope.errors = resp.data
@@ -156,7 +165,7 @@ angular
 
       function update() {
         apiService
-        .updateExercise($scope.exercise.id,{ exercise: $scope.exercise })
+        .updateExercise($scope.exercise.id,  formData())
         .then(resp => onSuccess(resp))
         .catch(resp => {
           $scope.errors = resp.data

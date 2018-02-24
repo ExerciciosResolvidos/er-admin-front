@@ -30,31 +30,30 @@ angular
       let filterAttrs = {}
 
       // create filtereds 
-      for(let resource of resources){
+      for(let resource of resources) {
         filterAttrs[resource.toLowerCase()] = (attrs) => attrs
       }
 
       let api = {}
 
 
-      for(let resource of resources){
+      for(let resource of resources) {
         let lowcase = resource.toLowerCase()
-        
 
         api[`get${resource}`] = (id) => 
-          $http.get(`${prefix}/${lowcase}s/show/${id}`,httpOpts)
+          $http.get(`${prefix}/${lowcase}s/show/${id}`, httpOpts)
 
         api[`get${resource}s`] = (query) => 
           $http.get(`${prefix}/${lowcase}s/list?` + $httpParamSerializerJQLike(query), httpOpts)
 
         api[`create${resource}`] = (attrs) => 
-          $http.post(`${prefix}/${lowcase}s/create` ,filterAttrs[lowcase](attrs), httpOpts)
+          $http.post(`${prefix}/${lowcase}s/create` , filterAttrs[lowcase](attrs), httpOpts)
 
         api[`update${resource}`] = (id,attrs) => 
           $http.put(`${prefix}/${lowcase}s/update/${id}`, filterAttrs[lowcase](attrs), httpOpts)
 
         api[`destroy${resource}`] = id => 
-           $http.delete(`${prefix}/${lowcase}s/destroy/${id}`, httpOpts)
+          $http.delete(`${prefix}/${lowcase}s/destroy/${id}`, httpOpts)
       }
 
 

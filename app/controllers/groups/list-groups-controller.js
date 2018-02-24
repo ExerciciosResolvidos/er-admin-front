@@ -2,7 +2,7 @@
 angular
   .module("ER")
   .controller("listGroupsController", 
-    ["$scope", "apiService", "$rootScope", 
+    [ "$scope", "apiService", "$rootScope", 
     function($scope,apiService, $rootScope) {
       
 
@@ -13,11 +13,16 @@ angular
           $scope.pagination = JSON.parse(resp.headers("X-pagination"))
           $scope.groups = resp.data
         })
-        .catch(resp => console.error(resp.data) )
+        .catch(resp => console.error(resp.data))
       
+      $scope.q = null;
+    
+      $scope.resetQuery = () => {
+        $scope.q = null;
+      };
 
       $scope.select = group =>  
-        $rootScope.$emit("group:select", group )
+        $rootScope.$emit("group:select", group)
 
       const init = () => $scope.list()
 
